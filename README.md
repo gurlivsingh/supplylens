@@ -1,121 +1,209 @@
+<div align="center">
+
 # SupplyLens
 
-**Team AlphaFire · TBO VoyageHack 4.0 · Multi Supplier Optimization**
+**Multi-supplier inventory for hotels and sightseeing that stays comparable without losing meaningful differences.**
 
-> SupplyLens makes fragmented hotel and sightseeing inventory comparable without erasing what makes each option different.
+[![CI](https://github.com/gurlivsingh/supplylens/actions/workflows/ci.yml/badge.svg)](https://github.com/gurlivsingh/supplylens/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.162-009688?logo=fastapi&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 
-SupplyLens is an explainable multi-supplier inventory layer for **Hotels** and **Sightseeing**. It
+[**Live demo**](https://supplylens-alphafire.onrender.com) · [Demo video](submission/AlphaFire_MultiSupplier_Demo_v1.mp4) · [Prototype deck](submission/AlphaFire_MultiSupplier_Prototype_v1.pdf) · [Documentation](#documentation)
 
-1. **groups the same underlying product** across suppliers (one listing per hotel or experience, not one per feed),
-2. **keeps meaningful differences apart** (room bed types, meal plans, pickup vs self-transfer, standard vs skip-the-line, cancellation terms),
-3. **compares only genuinely comparable offers** (complete total price, same context, known policy, fresh availability), and
-4. **ranks listings for the stated intent** with the reasons shown, and an audit trail for anything uncertain.
+<sub>Team AlphaFire · TBO VoyageHack 4.0 · Problem statement: Multi Supplier Optimization</sub>
 
-It is not a chatbot or a cheapest-price sorter. It does not make bookings.
+<br>
 
-**Live demo:** https://supplylens-alphafire.onrender.com (Render free tier: the first request after idle can take ~30-50 s to wake up)
+<img src="docs/images/hero.png" alt="SupplyLens search screen" width="100%">
 
-**All data is synthetic.** Suppliers (Atlas, Beacon, Corsa), properties, operators, prices, availability and reliability are fictional. See [docs/DATA_CARD.md](docs/DATA_CARD.md).
+</div>
 
 ---
 
-## Run it locally
+## Overview
 
-Requires Python 3.11+.
+Travel platforms receive the same hotels and experiences from many suppliers. Each supplier uses its own names, units and level of detail. Two things then go wrong. Listing pages fill with duplicates. And naive deduplication merges products that are not the same, such as a tour with hotel pickup and one without, or compares a tax-exclusive price with a full one.
+
+SupplyLens separates three decisions:
+
+| Decision | Question | Outcome |
+|---|---|---|
+| **Identity** | Are two supplier records the same hotel or experience? | `match` · `review` · `distinct` |
+| **Equivalence** | Are two room or activity variants interchangeable? | `equivalent` · `possible` · `distinct` |
+| **Recommendation** | Which eligible offer, and which listing, best fits the traveller's request? | Ranked, with visible reasons |
+
+The result is one trustworthy listing per product. Every meaningful option stays inside it, and the recommended offer is the best *eligible* one, not merely the lowest headline price.
+
+> [!NOTE]
+> All data is synthetic. Suppliers (Atlas, Beacon, Corsa), properties, operators, prices, availability and reliability are fictional. No bookings are made. See the [data card](docs/DATA_CARD.md).
+
+## Features
+
+**Hotels**
+- Consolidates duplicate properties despite abbreviations, prefixes and phone formats, while keeping branches of the same chain separate
+- Maps room types by occupancy, bed, size (sqft → m²) and view; a bed "subject to availability" is only a *possible* match
+- Merges property content with field-level sources, flags conflicts, and deduplicates images with attribution
+
+**Sightseeing**
+- Merges the same operator and itinerary across suppliers
+- Keeps look-alikes apart: pickup vs self-transfer, standard vs skip-the-line, with vs without a meal, different operators
+
+**Offers and ranking**
+- Eligibility before price: tax-exclusive, stale, unavailable or unknown-policy offers can never be "best"
+- Labels within comparable groups: *cheapest comparable*, *most flexible*, *balanced pick*
+- Documented ranking score with reasons on every result; a supplier with no history gets a neutral score, not a penalty
+
+**Trust**
+- A review queue for uncertain pairs, with reversible decisions and an audit log
+- An evaluation tab that recomputes every metric live
+
+<table>
+<tr>
+<td width="50%"><img src="docs/images/hotels.png" alt="Hotel consolidation and sourced content"><br><sub><b>Hotels:</b> 3 supplier records become 1 property, with sourced fields and a flagged conflict</sub></td>
+<td width="50%"><img src="docs/images/sightseeing.png" alt="Sightseeing matching"><br><sub><b>Sightseeing:</b> the pickup safari is merged across suppliers; the self-transfer version stays separate</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/images/review.png" alt="Review queue"><br><sub><b>Review queue:</b> uncertain pairs wait for a person, and every decision is audited</sub></td>
+<td width="50%"><img src="docs/images/evidence.png" alt="Evaluation"><br><sub><b>Evidence:</b> baselines vs SupplyLens, per vertical</sub></td>
+</tr>
+</table>
+
+## Results
+
+Measured on a small, hand-labelled synthetic benchmark. Treat these as exploratory, not as production performance. Full method in the [evaluation report](docs/EVALUATION.md).
+
+| Metric | Hotels | Sightseeing |
+|---|:---:|:---:|
+| Harmful merges: name-only baseline → SupplyLens | 3 → **0** | 3 → **0** |
+| Auto-link precision: baseline → SupplyLens | 57% → **100%** | 40% → **100%** |
+| Recall, automatic / with reviewer | 100% / 100% | 67% / 100% |
+| Ranking NDCG@k, held out: raw feed / cheapest / SupplyLens | 0.62 / 0.96 / **0.96** | 0.80 / 0.88 / **0.97** |
+| Recommended offers breaking eligibility rules | 0 / 14 | 0 / 29 |
+
+## Quick start
+
+Requires Python 3.11 or newer.
 
 ```bash
 git clone https://github.com/gurlivsingh/supplylens.git
 cd supplylens
 python -m venv .venv
-# Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements-dev.txt
 uvicorn supplylens.app:app --reload
 ```
 
-Open http://localhost:8000. API docs at http://localhost:8000/docs.
+Open <http://localhost:8000>. Interactive API documentation is served at `/docs`.
 
 | Task | Command |
 |---|---|
-| Run tests (19 acceptance cases) | `pytest -q` |
-| Run the offline evaluation | `python -m supplylens.evaluate` (writes `docs/evaluation_results.json`) |
-| Reset reviewer decisions | restart the server (decisions are kept in memory on purpose for a deterministic demo) |
+| Run the test suite | `pytest -q` |
+| Run the offline evaluation | `python -m supplylens.evaluate` |
+| Reset reviewer decisions | Restart the server (state is in memory by design) |
 
-## What to try
+## Guided tour
 
-| Story (master plan §14) | Where |
-|---|---|
-| 1. Hotel identity and enrichment: 3 supplier records of *Marina Pearl* become 1 property, with sourced fields, a flagged star-rating conflict and 2 duplicate images removed | Search → Hotels → `marina hotel with breakfast, free cancellation` |
-| 2. Room and policy preservation: *Deluxe King* (32 m²) = *Deluxe Room King Bed* (344 sqft); *Deluxe Twin* stays separate; "Double or Twin, subject to availability" is only a *possible* match | Same property → Room mapping |
-| 3. Sightseeing near-duplicate rejection: the pickup safari (2 suppliers) stays separate from the self-transfer safari | Sightseeing → `evening activity with hotel pickup and flexible cancellation` |
-| 4. Better offer choice: the cheapest headline price (Corsa, AED 1,580) loses because taxes are excluded; an unknown cancellation policy is never called flexible | Marina Pearl → Supplier offers |
-| 5. Relevant listing order: the dinner cruise outranks a cheaper cruise without dinner | Sightseeing → `dinner cruise` |
-| 6. Trust under uncertainty: *Oasis Palm Residences* vs *Residence* (same name, different street number) waits in the review queue; a 53-hour-old price is excluded | Review queue · Hidden by hard constraints |
+| # | Scenario | Try this |
+|:---:|---|---|
+| 1 | Hotel identity and enrichment | Hotels → `marina hotel with breakfast, free cancellation` |
+| 2 | Room and policy preservation | Open *Marina Pearl Hotel* → Room mapping |
+| 3 | Sightseeing near-duplicate kept apart | Sightseeing → `evening activity with hotel pickup and flexible cancellation` |
+| 4 | Cheapest headline price loses | *Marina Pearl Hotel* → Supplier offers (taxes excluded) |
+| 5 | Relevance before price | Sightseeing → `dinner cruise` |
+| 6 | Uncertainty stays visible | **Review queue** tab, and the "Hidden by hard constraints" list |
 
-The **Raw supplier feed** tab shows the baseline (19 listings as feeds deliver them). The **Evidence** tab recomputes every metric live.
+A step-by-step script is in the [demo guide](docs/DEMO_GUIDE.md).
 
 ## How it works
 
+```mermaid
+flowchart LR
+    A[Supplier records] --> B[Normalize<br/>names, units, phones, FX]
+    B --> C[Candidate blocking]
+    C --> D{Identity decision}
+    D -->|match| E[Cluster<br/>all pairs compatible]
+    D -->|review| R[Review queue]
+    D -->|distinct| X[Separate listing]
+    R -->|reviewer decision| E
+    E --> F[Variants<br/>room families · configurations]
+    F --> G[Offer eligibility<br/>tax · freshness · policy]
+    G --> H[Ranking and explanations]
 ```
-supplier records → normalize (names, units, phones, addresses, FX)
-  → candidate blocking (hotels ≤2 km apart, experiences sharing an attraction)
-  → identity decision: match / review / distinct, with evidence and hard conflicts
-  → cluster-wide compatibility check (A~B and B~C does not prove A~C)
-  → variants: room families (occupancy, bed, size in m², view) · experience configurations
-  → offers: eligibility (context, availability, freshness, complete price, required policy)
-            → labels within comparable groups: cheapest comparable · most flexible · balanced pick
-  → listing ranking: hard constraints → relevance → value, policy fit, freshness, reliability
-  → explanations + reviewer decisions with audit log
+
+The ranking score is documented and fixed (master plan §11); it is not learned:
+
+```
+score = 0.40·relevance + relevance × (0.25·value + 0.15·policy fit + 0.10·freshness + 0.10·reliability)
 ```
 
-Ranking weights (documented, not learned): relevance 0.40, value 0.25, policy fit 0.15, data freshness 0.10, evidenced reliability 0.10. Secondary signals are scaled by relevance, so a cheap but off-intent listing cannot outrank a relevant one. A supplier with no history gets a neutral 0.5, not a penalty.
+Requirements stated in the query ("flexible", "breakfast", "pickup", or an area like "marina") become hard filters. Anything filtered out is listed together with the reason.
 
-More: [docs/SOLUTION.md](docs/SOLUTION.md).
+## API
 
-## Results on the synthetic benchmark
-
-Small, hand-authored benchmark: exploratory evidence, not production performance. Full report: [docs/EVALUATION.md](docs/EVALUATION.md).
-
-| | Hotels | Sightseeing |
+| Method | Endpoint | Purpose |
 |---|---|---|
-| Labelled pairs (true matches) | 9 (4) | 9 (3) |
-| Harmful merges: name-only baseline → SupplyLens | 3 → **0** | 3 → **0** |
-| Auto-link precision: baseline → SupplyLens | 57% → **100%** | 40% → **100%** |
-| Recall, auto-only / reviewer-assisted | 100% / 100% | 67% / 100% |
-| Held-out ranking NDCG@k: raw feed / cheapest eligible / SupplyLens (5 intents) | 0.62 / 0.96 / **0.96** | 0.80 / 0.88 / **0.97** |
-| Recommended offers breaking eligibility rules | 0 of 14 | 0 of 29 |
+| `GET` | `/api/search?vertical=hotels&q=…` | Ranked, consolidated results, with hidden items and reasons |
+| `GET` | `/api/entity/{vertical}/{id}` | Sourced content, variants and all supplier offers |
+| `GET` | `/api/raw/{vertical}` | Baseline: supplier records as delivered |
+| `GET` / `POST` | `/api/review` | Review queue and audit log / submit a decision |
+| `GET` | `/api/eval` | Live evaluation report |
+| `GET` | `/healthz` | Health check |
 
-## Repository layout
+## Project structure
 
 ```
-supplylens/engine.py     matching, room mapping, enrichment, offers, ranking, review
-supplylens/evaluate.py   offline evaluation (baselines, NDCG, safety checks, latency)
-supplylens/app.py        FastAPI: /api/search, /api/entity, /api/review, /api/eval, UI
-web/                     single-page UI (no build step)
-data/                    synthetic fixtures and labels
-tests/                   acceptance tests from the master plan
-docs/                    solution note, data card, evaluation, demo guide, risk note
-submission/              decks (PDF/PPTX) and videos for both rounds
-render.yaml              Render blueprint
+supplylens/
+├── supplylens/
+│   ├── engine.py        matching, room mapping, enrichment, offers, ranking, review
+│   ├── evaluate.py      baselines, NDCG, safety checks, latency
+│   └── app.py           FastAPI app and routes
+├── web/                 single-page UI (no build step)
+├── data/                synthetic fixtures and labels
+├── tests/               acceptance tests derived from the master plan
+├── docs/                solution note, data card, evaluation, demo guide, risk note
+├── submission/          hackathon decks, videos and their build script
+└── render.yaml          Render deployment blueprint
 ```
 
-## Deploy on Render
+## Deployment
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/gurlivsingh/supplylens)
 
-The repo includes `render.yaml`. Click the button above, or in Render: **New → Blueprint → connect this repository → Apply**. Or create a Web Service manually:
-build `pip install -r requirements.txt`, start `uvicorn supplylens.app:app --host 0.0.0.0 --port $PORT`, health check `/healthz`. No secrets or environment variables are required.
+The repository includes a [`render.yaml`](render.yaml) blueprint. No secrets or environment variables are required.
 
-## Scope and limits
+| Setting | Value |
+|---|---|
+| Build command | `pip install -r requirements.txt` |
+| Start command | `uvicorn supplylens.app:app --host 0.0.0.0 --port $PORT` |
+| Health check | `/healthz` |
 
-- No bookings, payments, live supplier APIs or customer data.
-- Reviewer decisions live in memory and reset on restart.
-- Lexical relevance only: generic words such as "tour" or "experience" match every listing (visible in the test intents). Semantic matching is stretch work.
-- Thresholds were set by hand on the fixture; the benchmark is too small to tune or to claim conversion impact.
+On Render's free plan the service sleeps when idle, so the first request can take 30–50 seconds.
 
-See [docs/RISK_SECURITY.md](docs/RISK_SECURITY.md).
+## Documentation
 
-## Credits and disclosure
+| Document | Contents |
+|---|---|
+| [Solution note](docs/SOLUTION.md) | How the brief maps to the code, the data model, safety rules, ranking |
+| [Data card](docs/DATA_CARD.md) | Origin, counts, deliberate difficulties, labels, limits |
+| [Evaluation report](docs/EVALUATION.md) | Baselines, metrics per vertical, observed failures |
+| [Demo guide](docs/DEMO_GUIDE.md) | Five-minute walkthrough and expected outcomes |
+| [Risk and security note](docs/RISK_SECURITY.md) | Boundaries, input validation, decision risks |
+| [Submission package](submission/README.md) | Hackathon decks, videos and upload checklist |
 
-Built by Team AlphaFire for TBO VoyageHack 4.0. AI coding assistance (Claude) was used to write code, documentation and submission material, which the team reviewed. Fonts: Inter, Source Serif 4, JetBrains Mono (SIL Open Font License, via Google Fonts). No third-party data or images are included.
+## Limitations
 
-License: MIT.
+- Synthetic data only. Not validated on real supplier feeds or at scale.
+- Relevance is lexical: generic words like "tour" match every listing. Semantic and multilingual matching are future work.
+- Reviewer decisions are held in memory without authentication. That is suitable for a demo, not for production.
+- No conversion or revenue claims. Those need a controlled pilot with real traffic.
+
+## Team
+
+**Team AlphaFire** · TBO VoyageHack 4.0
+
+AI coding assistance (Claude) was used to write code, documentation and submission material, and the team reviewed the results. Fonts: Inter, Source Serif 4 and JetBrains Mono (SIL Open Font License).
+
+## License
+
+[MIT](LICENSE) © 2026 Team AlphaFire

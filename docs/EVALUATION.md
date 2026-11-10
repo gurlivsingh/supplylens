@@ -1,3 +1,5 @@
+[← Back to README](../README.md)
+
 # Evaluation report
 
 Reproduce with `python -m supplylens.evaluate`. It writes [evaluation_results.json](evaluation_results.json), and the live app's **Evidence** tab recomputes the same numbers. Dataset: synthetic fixture v1 ([DATA_CARD.md](DATA_CARD.md)). Hotels and Sightseeing are reported separately, never combined.
