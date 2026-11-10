@@ -9,7 +9,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.162-009688?logo=fastapi&logoColor=white)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black)](LICENSE)
 
-[**Live demo**](https://supplylens-alphafire.onrender.com) · [Demo video](submission/AlphaFire_MultiSupplier_Demo_v1.mp4) · [Prototype deck](submission/AlphaFire_MultiSupplier_Prototype_v1.pdf) · [Documentation](#documentation)
+[**Live demo**](https://supplylens-alphafire.onrender.com) · [Idea deck](submission/round1/AlphaFire_MultiSupplier_Idea_v2.pdf) · [Idea video](submission/round1/AlphaFire_MultiSupplier_IdeaPitch_v2.mp4) · [Demo video](submission/AlphaFire_MultiSupplier_Demo_v1.mp4) · [Documentation](#documentation)
 
 <sub>Team AlphaFire · TBO VoyageHack 4.0 · Problem statement: Multi Supplier Optimization</sub>
 

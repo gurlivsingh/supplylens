@@ -6,12 +6,23 @@ Topic to select on Unstop: **Multi Supplier Optimization**.
 
 ## Round 1: Idea submission (deadline 20 Nov 2026, 11:59 PM IST)
 
+The format is a 2-slide PPT, excluding the cover and thank-you slides, plus a video explaining the idea. Files are in [`round1/`](round1/):
+
 | Required | File |
 |---|---|
-| Presentation (PDF or PPTX): 2 content slides plus cover and thank-you | `AlphaFire_MultiSupplier_Idea_v1.pdf` (or `.pptx`) |
-| Video explaining the idea (MP4) | `AlphaFire_MultiSupplier_IdeaPitch_v1.mp4` |
+| Presentation (PPTX or PDF) | [`AlphaFire_MultiSupplier_Idea_v2.pptx`](round1/AlphaFire_MultiSupplier_Idea_v2.pptx) · [`.pdf`](round1/AlphaFire_MultiSupplier_Idea_v2.pdf) |
+| Video explaining the idea (MP4, 2:55, 1080p) | [`AlphaFire_MultiSupplier_IdeaPitch_v2.mp4`](round1/AlphaFire_MultiSupplier_IdeaPitch_v2.mp4) |
 
-Content slide 1 covers **Potential Impact and Innovation**. Content slide 2 covers **Implementation and Technical Feasibility, and Adoption Risk/Feasibility**.
+- **Slide 1:** cover.
+- **Slide 2:** Potential Impact and Innovation.
+- **Slide 3:** Implementation and Technical Feasibility, and Adoption Risk/Feasibility.
+- **Slide 4:** thank you.
+
+The PPTX is fully editable, and the narration script is in the speaker notes. Rebuild everything with `python submission/round1/build_round1.py` (needs Windows and PowerPoint).
+
+| Cover | Content 1 | Content 2 | Thank you |
+|---|---|---|---|
+| ![](round1/preview/slide1.png) | ![](round1/preview/slide2.png) | ![](round1/preview/slide3.png) | ![](round1/preview/slide4.png) |
 
 ## Round 2: Prototype submission (deadline 24 Dec 2026, 11:59 PM IST)
 
@@ -32,7 +43,7 @@ Content slide 1 covers **Potential Impact and Innovation**. Content slide 2 cove
 - [ ] Open the Render link once to wake it up before reviewers do.
 - [ ] Save the portal's submission confirmation.
 
-The narration is synthetic (Windows text-to-speech). If you want your own voices, read the `say` text in `content.py` (it is also in the PPTX speaker notes) and re-record.
+The Round 2 narration uses Windows text-to-speech, and Round 1 uses Microsoft's neural voice (en-IN). If you want your own voices, read the `say` text in `content.py` (it is also in the PPTX speaker notes) and re-record.
 
 ## Rebuilding
 
