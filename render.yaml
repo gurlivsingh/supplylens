@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: supplylens
+    name: supplylens-alphafire
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt

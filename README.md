@@ -100,7 +100,9 @@ render.yaml              Render blueprint
 
 ## Deploy on Render
 
-The repo includes `render.yaml`. In Render: **New → Blueprint → connect this repository → Apply**. Or create a Web Service manually:
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/gurlivsingh/supplylens)
+
+The repo includes `render.yaml`. Click the button above, or in Render: **New → Blueprint → connect this repository → Apply**. Or create a Web Service manually:
 build `pip install -r requirements.txt`, start `uvicorn supplylens.app:app --host 0.0.0.0 --port $PORT`, health check `/healthz`. No secrets or environment variables are required.
 
 ## Scope and limits
