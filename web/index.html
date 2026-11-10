@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SupplyLens · Multi-supplier inventory, made comparable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <a class="logo" href="#search">SupplyLens</a>
+  <nav aria-label="Primary">
+    <a href="#search" data-route="search">Search</a>
+    <a href="#raw" data-route="raw">Raw supplier feed</a>
+    <a href="#review" data-route="review">Review queue</a>
+    <a href="#evidence" data-route="evidence">Evidence</a>
+  </nav>
+  <a class="btn-ivory" href="https://github.com/gurlivsingh/supplylens" rel="noopener">Source on GitHub</a>
+</header>
+<p class="notice" role="note">Synthetic demo data: suppliers, properties, prices, availability and reliability are fictional. No bookings are made.</p>
+
+<main id="main">
+  <section id="view-search" class="view">
+    <div class="hero">
+      <h1>Comparable, not <u>flattened</u>.</h1>
+      <p>SupplyLens groups the same hotel or experience across suppliers, keeps the room, transfer, meal and policy differences that matter, and recommends the best <em>eligible</em> offer for your constraints, with the reasons shown.</p>
+    </div>
+
+    <form id="search-form" class="feature" aria-label="Search inventory">
+      <fieldset class="seg" aria-label="Vertical">
+        <label><input type="radio" name="vertical" value="hotels" checked> Hotels</label>
+        <label><input type="radio" name="vertical" value="experiences"> Sightseeing</label>
+      </fieldset>
+      <div class="row">
+        <label class="grow">What are you looking for?
+          <input name="q" type="search" maxlength="200" placeholder="e.g. marina hotel with breakfast, free cancellation" autocomplete="off">
+        </label>
+        <label>Adults
+          <input name="adults" type="number" min="1" max="8" value="2">
+        </label>
+        <label>Sort
+          <select name="sort"><option value="recommended">Recommended</option><option value="price">Total price</option></select>
+        </label>
+      </div>
+      <div class="row checks">
+        <label><input type="checkbox" name="refundable"> Free cancellation required</label>
+        <label class="only-hotels"><input type="checkbox" name="breakfast"> Breakfast included</label>
+        <label class="only-experiences"><input type="checkbox" name="pickup"> Hotel pickup required</label>
+        <button class="btn-clay" type="submit">Search</button>
+      </div>
+      <p class="caption" id="context"></p>
+      <p class="caption">Try: <a href="#search?v=hotels&q=marina%20hotel%20with%20breakfast%2C%20free%20cancellation">marina hotel with breakfast, free cancellation</a> · <a href="#search?v=hotels&q=beach%20stay%20with%20pool">beach stay with pool</a> · <a href="#search?v=experiences&q=evening%20activity%20with%20hotel%20pickup%20and%20flexible%20cancellation">evening activity with hotel pickup</a> · <a href="#search?v=experiences&q=observation%20deck%20ticket">observation deck ticket</a></p>
+    </form>
+
+    <div class="results-wrap">
+      <div>
+        <p class="summary" id="summary" aria-live="polite"></p>
+        <ol id="results" class="results"></ol>
+        <section id="excluded"></section>
+      </div>
+      <aside id="detail" class="detail" aria-live="polite" tabindex="-1"></aside>
+    </div>
+  </section>
+
+  <section id="view-raw" class="view" hidden>
+    <div class="hero"><h1>What suppliers send.</h1><p>The same inventory as raw feeds deliver it: every supplier record listed separately. This is the baseline SupplyLens consolidates.</p></div>
+    <div id="raw" class="grid"></div>
+  </section>
+
+  <section id="view-review" class="view" hidden>
+    <div class="hero"><h1>Uncertain stays visible.</h1><p>Pairs with mixed evidence are never merged automatically. A reviewer decides; every decision is logged and can be reversed.</p></div>
+    <div id="queue"></div>
+    <h2 class="section-title">Audit log</h2>
+    <ol id="audit" class="audit"></ol>
+  </section>
+
+  <section id="view-evidence" class="view" hidden>
+    <div class="hero"><h1>Measured, with counts.</h1><p>Offline results on the synthetic benchmark, reported separately for Hotels and Sightseeing. Small samples: treat as exploratory, not as production performance.</p></div>
+    <div id="eval"><p class="caption">Running evaluation…</p></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>
+    <h3>SupplyLens</h3>
+    <p>Team AlphaFire · VoyageHack 4.0 · Multi Supplier Optimization</p>
+  </div>
+  <div>
+    <h3>Project</h3>
+    <a href="https://github.com/gurlivsingh/supplylens">Repository</a>
+    <a href="https://github.com/gurlivsingh/supplylens/blob/main/docs/SOLUTION.md">Solution note</a>
+    <a href="https://github.com/gurlivsingh/supplylens/blob/main/docs/DATA_CARD.md">Data card</a>
+  </div>
+  <div>
+    <h3>API</h3>
+    <a href="/docs">OpenAPI docs</a>
+    <a href="/api/eval">Evaluation JSON</a>
+  </div>
+</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>

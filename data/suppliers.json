@@ -1,0 +1,12 @@
+{
+  "_notice": "SYNTHETIC reliability history for fictional suppliers. Corsa intentionally has no history to demonstrate neutral handling.",
+  "fx": {"base": "AED", "rates": {"AED": 1.0, "USD": 3.6725}, "as_of": "2026-12-15T06:00:00+04:00", "note": "Single documented FX snapshot for comparison only; not a supplier quote."},
+  "now": "2026-12-15T10:00:00+04:00",
+  "freshness_hours": 36,
+  "context": {"hotels": {"check_in": "2026-12-20", "nights": 2, "adults": 2, "rooms": 1}, "experiences": {"date": "2026-12-21", "adults": 2}},
+  "suppliers": {
+    "Atlas": {"confirmed": 196, "bookings": 200},
+    "Beacon": {"confirmed": 141, "bookings": 150},
+    "Corsa": {"confirmed": null, "bookings": 0}
+  }
+}

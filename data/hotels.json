@@ -1,0 +1,117 @@
+{
+  "_notice": "SYNTHETIC DATA. Fictional properties, suppliers, prices and availability authored by Team AlphaFire for the VoyageHack 4.0 prototype. Not real inventory.",
+  "records": [
+    {
+      "id": "A-H101", "supplier": "Atlas", "name": "Marina Pearl Hotel",
+      "address": "14 Harbour Walk, Dubai Marina", "area": "Dubai Marina",
+      "lat": 25.0805, "lon": 55.1403, "phone": "+971 4 555 0101", "stars": 4,
+      "amenities": ["pool", "spa", "gym", "wifi"],
+      "description": "Waterfront hotel on Harbour Walk with a rooftop pool.",
+      "images": [{"hash": "img-mp-01", "caption": "Rooftop pool"}, {"hash": "img-mp-02", "caption": "Lobby"}],
+      "rooms": [
+        {"code": "DLX-K", "name": "Deluxe King", "occupancy": 2, "bed": "king", "size": 32, "size_unit": "sqm", "view": "marina"},
+        {"code": "DLX-T", "name": "Deluxe Twin", "occupancy": 2, "bed": "twin", "size": 32, "size_unit": "sqm", "view": "marina"}
+      ],
+      "fetched_at": "2026-12-15T08:00:00+04:00"
+    },
+    {
+      "id": "B-77812", "supplier": "Beacon", "name": "Marina Pearl Htl & Spa",
+      "address": "14 Harbour Walk Dubai Marina", "area": "Dubai Marina",
+      "lat": 25.0807, "lon": 55.1401, "phone": "+97145550101", "stars": 4,
+      "amenities": ["pool", "spa", "wifi", "breakfast buffet"],
+      "description": "Marina-front property with spa and buffet breakfast.",
+      "images": [{"hash": "img-mp-01", "caption": "Pool deck"}, {"hash": "img-mp-03", "caption": "Deluxe King room"}],
+      "rooms": [
+        {"code": "K-DLX", "name": "Deluxe Room King Bed", "occupancy": 2, "bed": "king", "size": 344, "size_unit": "sqft", "view": "marina"},
+        {"code": "DBL-ANY", "name": "Deluxe Double or Twin", "occupancy": 2, "bed": "subject to availability", "size": 344, "size_unit": "sqft", "view": "marina"}
+      ],
+      "fetched_at": "2026-12-15T07:30:00+04:00"
+    },
+    {
+      "id": "C-DXB-5531", "supplier": "Corsa", "name": "The Marina Pearl",
+      "address": "14 Harbour Walk, Marina", "area": "Dubai Marina",
+      "lat": 25.0806, "lon": 55.1404, "phone": null, "stars": 5,
+      "amenities": ["pool", "gym"],
+      "description": null,
+      "images": [{"hash": "img-mp-02", "caption": "Lobby"}],
+      "rooms": [
+        {"code": "SUP-K", "name": "Superior King", "occupancy": 3, "bed": "king", "size": 45, "size_unit": "sqm", "view": "city"}
+      ],
+      "fetched_at": "2026-12-14T22:00:00+04:00"
+    },
+    {
+      "id": "A-H205", "supplier": "Atlas", "name": "Saffron Courtyard Deira",
+      "address": "3 Creek Road, Deira", "area": "Deira",
+      "lat": 25.2697, "lon": 55.3095, "phone": "+971 4 555 0205", "stars": 3,
+      "amenities": ["wifi", "breakfast buffet"],
+      "description": "Heritage-style courtyard hotel near the creek souks.",
+      "images": [{"hash": "img-sc-01", "caption": "Courtyard"}],
+      "rooms": [{"code": "STD-D", "name": "Standard Double", "occupancy": 2, "bed": "double", "size": 22, "size_unit": "sqm", "view": "courtyard"}],
+      "fetched_at": "2026-12-15T08:00:00+04:00"
+    },
+    {
+      "id": "B-90211", "supplier": "Beacon", "name": "Saffron Courtyard Jumeirah",
+      "address": "88 Beach Road, Jumeirah", "area": "Jumeirah",
+      "lat": 25.2048, "lon": 55.2390, "phone": "+971 4 555 0288", "stars": 4,
+      "amenities": ["pool", "beach access", "wifi"],
+      "description": "Beachside branch of the Saffron Courtyard group.",
+      "images": [{"hash": "img-sj-01", "caption": "Beach"}],
+      "rooms": [{"code": "STD-D", "name": "Standard Double", "occupancy": 2, "bed": "double", "size": 26, "size_unit": "sqm", "view": "sea"}],
+      "fetched_at": "2026-12-15T07:00:00+04:00"
+    },
+    {
+      "id": "C-DXB-6020", "supplier": "Corsa", "name": "Saffron Courtyard Deira",
+      "address": "3 Creek Rd, Deira", "area": "Deira",
+      "lat": 25.2698, "lon": 55.3096, "phone": "+971 4 555 0205", "stars": 3,
+      "amenities": ["wifi"],
+      "description": null,
+      "images": [{"hash": "img-sc-01", "caption": "Courtyard"}, {"hash": "img-sc-02", "caption": "Standard room"}],
+      "rooms": [{"code": "DBL", "name": "Double Room", "occupancy": 2, "bed": "double", "size": 23, "size_unit": "sqm", "view": "courtyard"}],
+      "fetched_at": "2026-12-15T06:00:00+04:00"
+    },
+    {
+      "id": "A-H310", "supplier": "Atlas", "name": "Oasis Palm Residences",
+      "address": "21 Crescent Drive, Palm Jumeirah", "area": "Palm Jumeirah",
+      "lat": 25.1124, "lon": 55.1390, "phone": "+971 4 555 0310", "stars": 5,
+      "amenities": ["pool", "beach access", "kitchen"],
+      "description": "Apartment-style residences on the Palm crescent.",
+      "images": [{"hash": "img-op-01", "caption": "Living room"}],
+      "rooms": [{"code": "1BR", "name": "One Bedroom Apartment", "occupancy": 3, "bed": "king", "size": 70, "size_unit": "sqm", "view": "sea"}],
+      "fetched_at": "2026-12-15T08:00:00+04:00"
+    },
+    {
+      "id": "C-DXB-7104", "supplier": "Corsa", "name": "Oasis Palm Residence",
+      "address": "57 Crescent Drive, Palm Jumeirah", "area": "Palm Jumeirah",
+      "lat": 25.1162, "lon": 55.1428, "phone": null, "stars": 4,
+      "amenities": ["pool", "kitchen"],
+      "description": "Serviced residence on the Palm.",
+      "images": [{"hash": "img-op-02", "caption": "Exterior"}],
+      "rooms": [{"code": "APT1", "name": "1 Bedroom Apartment", "occupancy": 3, "bed": "king", "size": 68, "size_unit": "sqm", "view": "sea"}],
+      "fetched_at": "2026-12-15T05:00:00+04:00"
+    },
+    {
+      "id": "B-50400", "supplier": "Beacon", "name": "Dune View Inn",
+      "address": "5 Desert Road, Al Qudra", "area": "Al Qudra",
+      "lat": 24.9800, "lon": 55.3700, "phone": "+971 4 555 0400", "stars": 3,
+      "amenities": ["pool", "wifi", "breakfast buffet"],
+      "description": "Quiet inn on the desert edge.",
+      "images": [{"hash": "img-dv-01", "caption": "Desert view"}],
+      "rooms": [{"code": "STD-Q", "name": "Standard Queen", "occupancy": 2, "bed": "queen", "size": 25, "size_unit": "sqm", "view": "desert"}],
+      "fetched_at": "2026-12-15T08:00:00+04:00"
+    }
+  ],
+  "offers": [
+    {"id": "o1", "record": "A-H101", "room": "DLX-K", "total": 1650, "currency": "AED", "taxes_included": true, "meal": "room only", "refundable": false, "cancel_deadline": null, "payment": "pay now", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"},
+    {"id": "o2", "record": "B-77812", "room": "K-DLX", "total": 1720, "currency": "AED", "taxes_included": true, "meal": "breakfast", "refundable": true, "cancel_deadline": "2026-12-18T18:00:00+04:00", "payment": "pay at property", "available": true, "fetched_at": "2026-12-15T07:30:00+04:00"},
+    {"id": "o3", "record": "C-DXB-5531", "room": "SUP-K", "total": 1580, "currency": "AED", "taxes_included": false, "meal": "room only", "refundable": true, "cancel_deadline": "2026-12-19T12:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-14T22:00:00+04:00"},
+    {"id": "o4", "record": "A-H101", "room": "DLX-T", "total": 1600, "currency": "AED", "taxes_included": true, "meal": "room only", "refundable": true, "cancel_deadline": "2026-12-17T18:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"},
+    {"id": "o5", "record": "B-77812", "room": "DBL-ANY", "total": 1540, "currency": "AED", "taxes_included": true, "meal": "room only", "refundable": null, "cancel_deadline": null, "payment": "pay now", "available": true, "fetched_at": "2026-12-15T07:30:00+04:00"},
+    {"id": "o6", "record": "A-H205", "room": "STD-D", "total": 640, "currency": "AED", "taxes_included": true, "meal": "breakfast", "refundable": true, "cancel_deadline": "2026-12-19T12:00:00+04:00", "payment": "pay at property", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"},
+    {"id": "o7", "record": "C-DXB-6020", "room": "DBL", "total": 590, "currency": "AED", "taxes_included": true, "meal": "room only", "refundable": false, "cancel_deadline": null, "payment": "pay now", "available": true, "fetched_at": "2026-12-15T06:00:00+04:00"},
+    {"id": "o8", "record": "B-90211", "room": "STD-D", "total": 980, "currency": "AED", "taxes_included": true, "meal": "breakfast", "refundable": true, "cancel_deadline": "2026-12-18T12:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T07:00:00+04:00"},
+    {"id": "o9", "record": "A-H310", "room": "1BR", "total": 2900, "currency": "AED", "taxes_included": true, "meal": "room only", "refundable": true, "cancel_deadline": "2026-12-16T12:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"},
+    {"id": "o10", "record": "C-DXB-7104", "room": "APT1", "total": 2400, "currency": "AED", "taxes_included": true, "meal": "room only", "refundable": true, "cancel_deadline": "2026-12-18T12:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-13T05:00:00+04:00"},
+    {"id": "o11", "record": "B-50400", "room": "STD-Q", "total": 720, "currency": "AED", "taxes_included": true, "meal": "breakfast", "refundable": true, "cancel_deadline": "2026-12-18T12:00:00+04:00", "payment": "pay at property", "available": false, "fetched_at": "2026-12-15T08:00:00+04:00"},
+    {"id": "o12", "record": "B-50400", "room": "STD-Q", "total": 160, "currency": "USD", "taxes_included": true, "meal": "room only", "refundable": false, "cancel_deadline": null, "payment": "pay now", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"}
+  ]
+}

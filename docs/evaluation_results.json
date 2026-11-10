@@ -1,0 +1,289 @@
+{
+  "dataset": "synthetic fixture v1 (see docs/DATA_CARD.md)",
+  "verticals": {
+    "hotels": {
+      "matching": {
+        "name_only_baseline": {
+          "pairs": 9,
+          "true_matches": 4,
+          "auto_links": 7,
+          "auto_link_precision": 0.571,
+          "auto_only_recall": 1.0,
+          "assisted_recall": 1.0,
+          "sent_to_review": 0,
+          "harmful_merges": 3,
+          "harmful_merge_examples": [
+            "A-H205 + B-90211 (hard negative: same chain, other neighbourhood)",
+            "B-90211 + C-DXB-6020 (hard negative: same chain, other neighbourhood)",
+            "A-H310 + C-DXB-7104 (hard negative: similar name, different building)"
+          ]
+        },
+        "supplylens": {
+          "pairs": 9,
+          "true_matches": 4,
+          "auto_links": 4,
+          "auto_link_precision": 1.0,
+          "auto_only_recall": 1.0,
+          "assisted_recall": 1.0,
+          "sent_to_review": 1,
+          "harmful_merges": 0,
+          "harmful_merge_examples": []
+        },
+        "candidate_recall": 1.0
+      },
+      "ranking": {
+        "intents": [
+          {
+            "split": "validation",
+            "query": "marina hotel with breakfast, free cancellation",
+            "pool": 3,
+            "shown": 1,
+            "raw_supplier_order": 1.0,
+            "k": 3,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Marina Pearl Hotel"
+          },
+          {
+            "split": "validation",
+            "query": "beach stay with pool",
+            "pool": 5,
+            "shown": 4,
+            "raw_supplier_order": 0.185,
+            "k": 5,
+            "cheapest_eligible": 0.683,
+            "supplylens": 0.987,
+            "top_result": "Saffron Courtyard Jumeirah"
+          },
+          {
+            "split": "validation",
+            "query": "budget hotel near old souks",
+            "pool": 5,
+            "shown": 1,
+            "raw_supplier_order": 0.0,
+            "k": 5,
+            "cheapest_eligible": 0.826,
+            "supplylens": 0.826,
+            "top_result": "Saffron Courtyard Deira"
+          },
+          {
+            "split": "test",
+            "query": "quiet desert hotel",
+            "pool": 5,
+            "shown": 1,
+            "raw_supplier_order": 1.0,
+            "k": 5,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Dune View Inn"
+          },
+          {
+            "split": "test",
+            "query": "apartment with kitchen on the palm",
+            "pool": 5,
+            "shown": 1,
+            "raw_supplier_order": 0.693,
+            "k": 5,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Oasis Palm Residences"
+          },
+          {
+            "split": "test",
+            "query": "spa hotel in dubai marina",
+            "pool": 5,
+            "shown": 1,
+            "raw_supplier_order": 1.0,
+            "k": 5,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Marina Pearl Hotel"
+          },
+          {
+            "split": "test",
+            "query": "family room for three with sea view",
+            "pool": 1,
+            "shown": 1,
+            "raw_supplier_order": 0.0,
+            "k": 1,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Oasis Palm Residences"
+          },
+          {
+            "split": "test",
+            "query": "cheap hotel with breakfast",
+            "pool": 3,
+            "shown": 2,
+            "raw_supplier_order": 0.38,
+            "k": 3,
+            "cheapest_eligible": 0.81,
+            "supplylens": 0.81,
+            "top_result": "Saffron Courtyard Deira"
+          }
+        ],
+        "summary": {
+          "validation_raw_supplier_order_mean_ndcg": 0.395,
+          "validation_cheapest_eligible_mean_ndcg": 0.836,
+          "validation_supplylens_mean_ndcg": 0.938,
+          "validation_intents_scored": 3,
+          "test_raw_supplier_order_mean_ndcg": 0.615,
+          "test_cheapest_eligible_mean_ndcg": 0.962,
+          "test_supplylens_mean_ndcg": 0.962,
+          "test_intents_scored": 5
+        }
+      },
+      "offers": {
+        "recommendations_checked": 14,
+        "rule_violations": []
+      },
+      "latency": {
+        "runs": 30,
+        "median_ms": 0.5,
+        "p95_ms": 0.52
+      }
+    },
+    "experiences": {
+      "matching": {
+        "name_only_baseline": {
+          "pairs": 9,
+          "true_matches": 3,
+          "auto_links": 5,
+          "auto_link_precision": 0.4,
+          "auto_only_recall": 0.667,
+          "assisted_recall": 0.667,
+          "sent_to_review": 0,
+          "harmful_merges": 3,
+          "harmful_merge_examples": [
+            "A-X11 + C-SS-208 (hard negative: pickup vs self-transfer)",
+            "B-T5002 + C-SS-310 (hard negative: standard vs premium access)",
+            "A-X31 + B-T6100 (hard negative: different operator, meal differs)"
+          ]
+        },
+        "supplylens": {
+          "pairs": 9,
+          "true_matches": 3,
+          "auto_links": 2,
+          "auto_link_precision": 1.0,
+          "auto_only_recall": 0.667,
+          "assisted_recall": 1.0,
+          "sent_to_review": 1,
+          "harmful_merges": 0,
+          "harmful_merge_examples": []
+        },
+        "candidate_recall": 1.0
+      },
+      "ranking": {
+        "intents": [
+          {
+            "split": "validation",
+            "query": "evening activity with hotel pickup and flexible cancellation",
+            "pool": 2,
+            "shown": 2,
+            "raw_supplier_order": 0.613,
+            "k": 2,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Old Dubai Souk Walk and Abra Crossing"
+          },
+          {
+            "split": "validation",
+            "query": "observation deck ticket",
+            "pool": 8,
+            "shown": 2,
+            "raw_supplier_order": 0.939,
+            "k": 5,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Skyline Tower: Level 124 Admission"
+          },
+          {
+            "split": "validation",
+            "query": "dinner cruise",
+            "pool": 8,
+            "shown": 4,
+            "raw_supplier_order": 0.697,
+            "k": 5,
+            "cheapest_eligible": 0.75,
+            "supplylens": 1.0,
+            "top_result": "Marina Dhow Dinner Cruise"
+          },
+          {
+            "split": "test",
+            "query": "desert safari with pickup",
+            "pool": 3,
+            "shown": 1,
+            "raw_supplier_order": 0.964,
+            "k": 3,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Evening Desert Safari with BBQ Dinner & Hotel Pickup"
+          },
+          {
+            "split": "test",
+            "query": "skip the line tower tickets",
+            "pool": 8,
+            "shown": 2,
+            "raw_supplier_order": 0.821,
+            "k": 5,
+            "cheapest_eligible": 0.913,
+            "supplylens": 1.0,
+            "top_result": "Skyline Tower Level 124 + 148 Skip-the-Line"
+          },
+          {
+            "split": "test",
+            "query": "souk walking tour",
+            "pool": 8,
+            "shown": 8,
+            "raw_supplier_order": 0.613,
+            "k": 5,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Old Dubai Souk Walk and Abra Crossing"
+          },
+          {
+            "split": "test",
+            "query": "sunset cruise in the marina",
+            "pool": 8,
+            "shown": 2,
+            "raw_supplier_order": 1.0,
+            "k": 5,
+            "cheapest_eligible": 1.0,
+            "supplylens": 1.0,
+            "top_result": "Marina Dhow Cruise"
+          },
+          {
+            "split": "test",
+            "query": "camel ride experience",
+            "pool": 8,
+            "shown": 8,
+            "raw_supplier_order": 0.613,
+            "k": 5,
+            "cheapest_eligible": 0.501,
+            "supplylens": 0.85,
+            "top_result": "Evening Desert Safari with BBQ Dinner & Hotel Pickup"
+          }
+        ],
+        "summary": {
+          "validation_raw_supplier_order_mean_ndcg": 0.75,
+          "validation_cheapest_eligible_mean_ndcg": 0.917,
+          "validation_supplylens_mean_ndcg": 1.0,
+          "validation_intents_scored": 3,
+          "test_raw_supplier_order_mean_ndcg": 0.802,
+          "test_cheapest_eligible_mean_ndcg": 0.883,
+          "test_supplylens_mean_ndcg": 0.97,
+          "test_intents_scored": 5
+        }
+      },
+      "offers": {
+        "recommendations_checked": 29,
+        "rule_violations": []
+      },
+      "latency": {
+        "runs": 30,
+        "median_ms": 0.3,
+        "p95_ms": 0.31
+      }
+    }
+  }
+}

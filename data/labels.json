@@ -1,0 +1,49 @@
+{
+  "_notice": "Hand-authored synthetic labels. Identity truth is defined independently of the matcher. Ranking grades (0-3) were written before scores were inspected. 'validation' intents were used while designing the ranker; 'test' intents were written once and not tuned on.",
+  "pairs": {
+    "hotels": [
+      {"a": "A-H101", "b": "B-77812", "truth": "match", "note": "abbreviated name, same address"},
+      {"a": "A-H101", "b": "C-DXB-5531", "truth": "match", "note": "'The' prefix, star rating conflict"},
+      {"a": "B-77812", "b": "C-DXB-5531", "truth": "match"},
+      {"a": "A-H205", "b": "C-DXB-6020", "truth": "match", "note": "Rd vs Road"},
+      {"a": "A-H205", "b": "B-90211", "truth": "distinct", "note": "hard negative: same chain, other neighbourhood"},
+      {"a": "B-90211", "b": "C-DXB-6020", "truth": "distinct", "note": "hard negative: same chain, other neighbourhood"},
+      {"a": "A-H310", "b": "C-DXB-7104", "truth": "distinct", "note": "hard negative: similar name, different building"},
+      {"a": "A-H101", "b": "B-90211", "truth": "distinct"},
+      {"a": "B-50400", "b": "A-H205", "truth": "distinct"}
+    ],
+    "experiences": [
+      {"a": "A-X11", "b": "B-T4410", "truth": "match", "note": "same operator and itinerary, paraphrased name"},
+      {"a": "A-X11", "b": "C-SS-208", "truth": "distinct", "note": "hard negative: pickup vs self-transfer"},
+      {"a": "B-T4410", "b": "C-SS-208", "truth": "distinct", "note": "hard negative: pickup vs self-transfer"},
+      {"a": "A-X20", "b": "B-T5002", "truth": "match", "note": "same admission product"},
+      {"a": "A-X20", "b": "C-SS-310", "truth": "distinct", "note": "hard negative: standard vs premium access"},
+      {"a": "B-T5002", "b": "C-SS-310", "truth": "distinct", "note": "hard negative: standard vs premium access"},
+      {"a": "A-X31", "b": "B-T6100", "truth": "distinct", "note": "hard negative: different operator, meal differs"},
+      {"a": "C-SS-420", "b": "A-X42", "truth": "match", "note": "operator missing on one record"},
+      {"a": "A-X11", "b": "A-X31", "truth": "distinct"}
+    ]
+  },
+  "intents": {
+    "hotels": [
+      {"split": "validation", "q": "marina hotel with breakfast, free cancellation", "grades": {"A-H101": 3}},
+      {"split": "validation", "q": "beach stay with pool", "grades": {"B-90211": 3, "A-H310": 3, "A-H101": 1}},
+      {"split": "validation", "q": "budget hotel near old souks", "grades": {"A-H205": 3, "B-90211": 1}},
+      {"split": "test", "q": "quiet desert hotel", "grades": {"B-50400": 3}},
+      {"split": "test", "q": "apartment with kitchen on the palm", "grades": {"A-H310": 3, "C-DXB-7104": 3}},
+      {"split": "test", "q": "spa hotel in dubai marina", "grades": {"A-H101": 3}},
+      {"split": "test", "q": "family room for three with sea view", "adults": 3, "grades": {"A-H310": 3, "C-DXB-7104": 3, "B-90211": 1}},
+      {"split": "test", "q": "cheap hotel with breakfast", "grades": {"A-H205": 3, "B-90211": 2, "A-H101": 2}}
+    ],
+    "experiences": [
+      {"split": "validation", "q": "evening activity with hotel pickup and flexible cancellation", "grades": {"A-X11": 3, "A-X42": 3, "C-SS-420": 2}},
+      {"split": "validation", "q": "observation deck ticket", "grades": {"A-X20": 3, "C-SS-310": 2}},
+      {"split": "validation", "q": "dinner cruise", "grades": {"A-X31": 3, "B-T6100": 1, "A-X11": 1, "C-SS-208": 1}},
+      {"split": "test", "q": "desert safari with pickup", "grades": {"A-X11": 3, "C-SS-208": 1}},
+      {"split": "test", "q": "skip the line tower tickets", "grades": {"C-SS-310": 3, "A-X20": 2}},
+      {"split": "test", "q": "souk walking tour", "grades": {"A-X42": 3, "C-SS-420": 3}},
+      {"split": "test", "q": "sunset cruise in the marina", "grades": {"B-T6100": 3, "A-X31": 3}},
+      {"split": "test", "q": "camel ride experience", "grades": {"A-X11": 3, "C-SS-208": 3}}
+    ]
+  }
+}

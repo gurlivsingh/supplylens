@@ -1,0 +1,87 @@
+{
+  "_notice": "SYNTHETIC DATA. Fictional operators, suppliers, prices and availability authored by Team AlphaFire for the VoyageHack 4.0 prototype. Not real inventory.",
+  "records": [
+    {
+      "id": "A-X11", "supplier": "Atlas", "name": "Evening Desert Safari with BBQ Dinner & Hotel Pickup",
+      "attraction": "desert safari", "operator": "Red Dune Tours", "area": "Al Awir desert",
+      "duration_h": 6, "pickup": true, "meal": true, "access": "standard", "language": "English", "private": false, "slot": "evening",
+      "description": "Dune bashing, camel ride, BBQ dinner at camp. Hotel pickup and drop-off included.",
+      "fetched_at": "2026-12-15T08:00:00+04:00"
+    },
+    {
+      "id": "B-T4410", "supplier": "Beacon", "name": "Red Dune Evening Safari - BBQ, Camel Ride, Transfers",
+      "attraction": "desert safari", "operator": "Red Dune Tours", "area": "Al Awir desert",
+      "duration_h": 6.5, "pickup": true, "meal": true, "access": "standard", "language": "English", "private": false, "slot": "evening",
+      "description": "Evening safari with return transfers from Dubai hotels and barbecue dinner.",
+      "fetched_at": "2026-12-15T07:30:00+04:00"
+    },
+    {
+      "id": "C-SS-208", "supplier": "Corsa", "name": "Evening Desert Safari with BBQ Dinner",
+      "attraction": "desert safari", "operator": "Red Dune Tours", "area": "Al Awir desert",
+      "duration_h": 5, "pickup": false, "meal": true, "access": "standard", "language": "English", "private": false, "slot": "evening",
+      "description": "Meet at the Red Dune camp. Self-transfer; no hotel pickup.",
+      "fetched_at": "2026-12-15T06:00:00+04:00"
+    },
+    {
+      "id": "A-X20", "supplier": "Atlas", "name": "Skyline Tower Observation Deck Level 124 Ticket",
+      "attraction": "skyline tower", "operator": "Skyline Tower", "area": "Downtown",
+      "duration_h": 1.5, "pickup": false, "meal": false, "access": "standard", "language": null, "private": false, "slot": "any",
+      "description": "Timed general admission to the level 124 deck.",
+      "fetched_at": "2026-12-15T08:00:00+04:00"
+    },
+    {
+      "id": "B-T5002", "supplier": "Beacon", "name": "Skyline Tower: Level 124 Admission",
+      "attraction": "skyline tower", "operator": "Skyline Tower", "area": "Downtown",
+      "duration_h": 1.5, "pickup": false, "meal": false, "access": "standard", "language": null, "private": false, "slot": "any",
+      "description": "Entry ticket for level 124 observation deck.",
+      "fetched_at": "2026-12-15T07:30:00+04:00"
+    },
+    {
+      "id": "C-SS-310", "supplier": "Corsa", "name": "Skyline Tower Level 124 + 148 Skip-the-Line",
+      "attraction": "skyline tower", "operator": "Skyline Tower", "area": "Downtown",
+      "duration_h": 2, "pickup": false, "meal": false, "access": "premium", "language": null, "private": false, "slot": "any",
+      "description": "Premium fast-track observation deck access to levels 124 and 148 with lounge refreshments.",
+      "fetched_at": "2026-12-15T06:00:00+04:00"
+    },
+    {
+      "id": "A-X31", "supplier": "Atlas", "name": "Marina Dhow Dinner Cruise",
+      "attraction": "dhow cruise", "operator": "Pearl Dhow Co", "area": "Dubai Marina",
+      "duration_h": 2, "pickup": false, "meal": true, "access": "standard", "language": "English", "private": false, "slot": "evening",
+      "description": "Two-hour cruise with international buffet dinner.",
+      "fetched_at": "2026-12-15T08:00:00+04:00"
+    },
+    {
+      "id": "B-T6100", "supplier": "Beacon", "name": "Marina Dhow Cruise",
+      "attraction": "dhow cruise", "operator": "Harbour Lights Cruises", "area": "Dubai Marina",
+      "duration_h": 2, "pickup": false, "meal": false, "access": "standard", "language": "English", "private": false, "slot": "evening",
+      "description": "Sightseeing cruise along the marina. Soft drinks only.",
+      "fetched_at": "2026-12-15T07:30:00+04:00"
+    },
+    {
+      "id": "C-SS-420", "supplier": "Corsa", "name": "Old Dubai Evening Walk & Abra Ride",
+      "attraction": "old dubai walk", "operator": null, "area": "Deira",
+      "duration_h": 3, "pickup": true, "meal": false, "access": "standard", "language": "English", "private": false, "slot": "evening",
+      "description": "Guided walk through the souks with an abra creek crossing. Hotel pickup included.",
+      "fetched_at": "2026-12-15T06:00:00+04:00"
+    },
+    {
+      "id": "A-X42", "supplier": "Atlas", "name": "Old Dubai Souk Walk and Abra Crossing",
+      "attraction": "old dubai walk", "operator": "Creekside Guides", "area": "Deira",
+      "duration_h": 3, "pickup": true, "meal": false, "access": "standard", "language": "English", "private": false, "slot": "evening",
+      "description": "Evening souk tour with abra ride. Pickup from central hotels.",
+      "fetched_at": "2026-12-15T08:00:00+04:00"
+    }
+  ],
+  "offers": [
+    {"id": "x1", "record": "A-X11", "total": 340, "currency": "AED", "taxes_included": true, "refundable": true, "cancel_deadline": "2026-12-20T18:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"},
+    {"id": "x2", "record": "B-T4410", "total": 310, "currency": "AED", "taxes_included": true, "refundable": false, "cancel_deadline": null, "payment": "pay now", "available": true, "fetched_at": "2026-12-15T07:30:00+04:00"},
+    {"id": "x3", "record": "C-SS-208", "total": 220, "currency": "AED", "taxes_included": true, "refundable": true, "cancel_deadline": "2026-12-20T12:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T06:00:00+04:00"},
+    {"id": "x4", "record": "A-X20", "total": 360, "currency": "AED", "taxes_included": true, "refundable": true, "cancel_deadline": "2026-12-20T12:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"},
+    {"id": "x5", "record": "B-T5002", "total": 330, "currency": "AED", "taxes_included": false, "refundable": true, "cancel_deadline": "2026-12-20T12:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T07:30:00+04:00"},
+    {"id": "x6", "record": "C-SS-310", "total": 780, "currency": "AED", "taxes_included": true, "refundable": false, "cancel_deadline": null, "payment": "pay now", "available": true, "fetched_at": "2026-12-15T06:00:00+04:00"},
+    {"id": "x7", "record": "A-X31", "total": 420, "currency": "AED", "taxes_included": true, "refundable": true, "cancel_deadline": "2026-12-20T18:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"},
+    {"id": "x8", "record": "B-T6100", "total": 190, "currency": "AED", "taxes_included": true, "refundable": true, "cancel_deadline": "2026-12-20T18:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T07:30:00+04:00"},
+    {"id": "x9", "record": "C-SS-420", "total": 150, "currency": "AED", "taxes_included": true, "refundable": null, "cancel_deadline": null, "payment": "pay now", "available": true, "fetched_at": "2026-12-15T06:00:00+04:00"},
+    {"id": "x10", "record": "A-X42", "total": 170, "currency": "AED", "taxes_included": true, "refundable": true, "cancel_deadline": "2026-12-20T12:00:00+04:00", "payment": "pay now", "available": true, "fetched_at": "2026-12-15T08:00:00+04:00"}
+  ]
+}
